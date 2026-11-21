@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI FitSense — Privacy Policy</title>
+<meta name="description" content="How AI FitSense collects, uses and protects your data.">
+<meta name="theme-color" content="#F7F2E9">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site">
+<div class="bar">
+<a class="brand" href="index.html"><img src="favicon.svg" alt="" width="28" height="28">AI FitSense</a>
+<nav>
+<a href="privacy-policy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+<a href="delete-account.html">Delete account</a>
+</nav>
+</div>
+</header>
+<main class="doc">
+<h1>AI FitSense — Privacy Policy</h1>
+<p><strong>Last updated:</strong> 2026-10-01</p>
+<p>This policy describes what data AI FitSense ("the app," "we," "us") collects, how it's used, and how it's stored. It is written directly from the app's actual implementation, not a generic template — every data category below reflects a real field, collection, or SDK call in the app's code as of this draft.</p>
+<h2>1. Who this applies to</h2>
+<p>This policy applies to anyone who creates an account and uses the AI FitSense mobile app. AI FitSense is intended for users who are 18 years of age or older.</p>
+<h2>2. Data we collect</h2>
+<h3>2.1 Account data</h3>
+<ul>
+<li><strong>Email address and password</strong>, collected at sign-up and managed by Firebase Authentication. We never see or store your plain-text password — Firebase handles authentication and stores only a securely hashed credential.</li>
+<li><strong>Name:</strong> the name you enter right after sign-up, stored with your profile.</li>
+<li><strong>Consent timestamp:</strong> the date and time you accepted this policy at sign-up, so we have a record of when consent was given.</li>
+</ul>
+<h3>2.2 Profile data</h3>
+<p>Collected during profile setup and editable afterward:</p>
+<ul>
+<li>Age</li>
+<li>Gender</li>
+<li>Height (cm)</li>
+<li>Weight (kg)</li>
+<li>Activity level</li>
+<li>Fitness goal</li>
+<li>An optional custom daily water intake target, if you choose to set one instead of using the calculated default</li>
+<li>Optional self-reported answers about your training experience, familiarity with exercises, and strength level, used to estimate a fitness readiness level. That readiness level is calculated by our backend from your answers and profile and stored with your profile.</li>
+</ul>
+<h3>2.3 Activity and health-adjacent data you generate by using the app</h3>
+<ul>
+<li><strong>Workout plans and history:</strong> your assigned weekly workout plan and a record of which workout days you've marked complete.</li>
+<li><strong>Diet plans:</strong> your generated daily meal plan and calorie target. If you use food search, your search terms are sent to the USDA FoodData Central public database to look up nutrition information — no personal profile data is included in that lookup, only the food name you typed.</li>
+<li><strong>Water intake logs:</strong> timestamped entries each time you log water intake.</li>
+<li><strong>Weight/progress logs:</strong> timestamped weight entries you log over time, used to show your progress trend and streak.</li>
+</ul>
+<h3>2.4 Pose detection (camera) data</h3>
+<p>When you use the guided exercise (pose detection) feature, the app accesses your device camera to count reps and give form feedback. <strong>Camera frames are processed entirely on your device</strong> using Google's on-device ML Kit Pose Detection — frames and the body-landmark coordinates extracted from them are used only in memory, in real time, to count reps and give feedback, and are <strong>never stored, saved, or transmitted anywhere</strong> — not to our servers, not to Firebase, not to any third party. No image, video, or landmark data from this feature ever leaves your device.</p>
+<p><strong>Added 2026-09-24:</strong> we do store how long a pose-detection session lasted (a duration in seconds, added to your workout history when a session ends) — this is a single elapsed-time number, not camera, image, or landmark data, and doesn't change the "never leaves your device" guarantee above for the actual camera/pose data itself.</p>
+<h3>2.5 Automatically collected diagnostic data</h3>
+<ul>
+<li><strong>Crash reports</strong> (Firebase Crashlytics): if the app crashes or hits an unhandled error, technical diagnostic information (stack trace, device model, OS version, app version) is sent to help us fix the bug. This is disabled in development builds and only active in the released app.</li>
+<li><strong>App usage analytics</strong> (Firebase Analytics): the app integrates Firebase Analytics to eventually collect automatic screen-view and navigation events (which screens are opened and when), to understand app usage. <strong>Corrected 2026-09-24:</strong> a known build configuration issue currently prevents Analytics from initializing on the released app at all, so no usage data is actually being collected right now, despite being integrated. This section will be updated to describe real collection once that's fixed. We do not log any custom in-app events beyond this automatic screen tracking, when it is working.</li>
+<li><strong>Pose-detection library metrics (Google ML Kit):</strong> the pose detection library the app uses sends Google metrics about how the library performs and is used. According to Google's ML Kit documentation, this includes device information (manufacturer, model, OS version, build, and available ML hardware accelerators), the app's package name and version, per-installation identifiers that are not intended to uniquely identify a user or physical device, performance metrics (such as latency), API configuration (such as image format and resolution), event types (such as feature initializations, model downloads, detection, and resource releases), and error codes. Google states it uses this data to measure performance, debug, maintain and improve the library, and detect misuse or abuse. Per Google, the camera images and the pose results themselves are not sent to Google. Google also states that the pose detection library uses Firebase Remote Config and Firebase Installations for remote configuration diagnostics. This is Google's description, not something we control.</li>
+</ul>
+<h2>3. How we use this data</h2>
+<ul>
+<li>To provide the app's core features: generating your personalized workout and diet plans, tracking your water intake and weight progress, and giving you real-time exercise feedback.</li>
+<li>To calculate the metrics (BMI, BMR, TDEE, calorie targets) your plans are based on.</li>
+<li>To diagnose and fix crashes and technical problems (Crashlytics).</li>
+<li>To understand overall app usage and improve the app (Analytics).</li>
+</ul>
+<p>We do not sell your data. We do not use your health, fitness, or profile data for advertising, and we do not share it with third parties for their own marketing purposes.</p>
+<h2>4. Where your data is stored</h2>
+<p>Your account and activity data is stored in <strong>Google Firebase</strong> (Cloud Firestore), a cloud database service, associated with your account and accessible only to you. Plan generation and metric calculations are performed by our backend server, which briefly processes your data on each request but does not maintain a separate copy of it outside Firestore. Firebase Authentication similarly manages your login credentials on Google's infrastructure.</p>
+<h2>5. Third-party services</h2>
+<ul>
+<li><strong>Firebase (Google):</strong> authentication, database (Cloud Firestore), crash reporting (Crashlytics), and analytics (currently not collecting, as described in section 2.5).</li>
+<li><strong>Render:</strong> hosts our backend server, which generates your plans and calculates your metrics. Requests from the app to the backend, which include the profile data needed for those calculations and your sign-in token (so the server can confirm who you are), are handled on Render's infrastructure.</li>
+<li><strong>Google Fonts:</strong> the app downloads its typefaces from Google's font servers while running, so Google receives a standard font request from your device (including its IP address). No account, profile, or activity data is included.</li>
+<li><strong>USDA FoodData Central:</strong> a public U.S. government nutrition database, queried only with the food name you search for — no account or profile data is sent.</li>
+<li><strong>Google ML Kit (Google):</strong> powers pose detection. Camera images and pose results are processed on your device (section 2.4); Google receives the usage and performance metrics described in section 2.5.</li>
+</ul>
+<h2>6. Your choices and rights</h2>
+<ul>
+<li>You can edit or correct your profile data at any time from within the app.</li>
+<li><strong>You can delete your account yourself, inside the app.</strong> Go to the <strong>Profile</strong> tab and tap <strong>Delete account</strong>. You will be asked to confirm your password and to type DELETE. This permanently deletes your login and your profile, workout plans and history, diet plans, weight and progress logs, and water intake logs. It cannot be undone. If something can't be deleted on the first try, the app tells you and keeps your login so you can try again.</li>
+<li><strong>If you can no longer use the app</strong> (for example you uninstalled it or can't sign in), email us at <a href="mailto:omj65425@gmail.com">omj65425@gmail.com</a> from the address on your account and ask us to delete your account and data. We will delete it within <strong>30 days</strong>.</li>
+</ul>
+<h2>7. Data retention</h2>
+<p>Your data is retained for as long as your account remains active. When you delete your account in the app, the data listed in section 6 is deleted from our database right away. Some limited information may remain for a while after that:</p>
+<ul>
+<li>Our hosting provider (Render) may keep routine server logs for a limited time under its own policies. These can include your account ID, but not your profile or activity data.</li>
+<li>Crash reports (section 2.5) are not linked to your account by us and are not removed by deleting your account.</li>
+<li>Where retention is required for legal or fraud-prevention purposes.</li>
+</ul>
+<h2>8. Children's privacy</h2>
+<p>AI FitSense is intended for adult users only (<strong>18 and older</strong>). It is not directed at children and is not intended for use by anyone under 18. The app does not accept profile ages below 18.</p>
+<h2>9. Changes to this policy</h2>
+<p>If this policy changes, we'll update the "Last updated" date above. Continued use of the app after a change means you accept the revised policy.</p>
+<h2>10. Contact</h2>
+<p>Questions about this policy or your data can be sent to <a href="mailto:omj65425@gmail.com">omj65425@gmail.com</a>.</p>
+</main>
+<footer class="site">
+<div class="bar">
+<span>AI FitSense</span>
+<nav>
+<a href="privacy-policy.html">Privacy Policy</a>
+<a href="terms.html">Terms of Service</a>
+<a href="delete-account.html">Delete your account</a>
+</nav>
+</div>
+</footer>
+</body>
+</html>
